@@ -1,36 +1,37 @@
-# 简介
-- 本项目用于每天自动生成 **树莓派** 的 **ArchLinuxARM** **aarch64** 系统镜像
-- 生成的镜像包含树莓派官方的闭源固件
+# Introduction
+- This project is used to automatically generate the **ArchLinuxARM** **aarch64** system image for the **Raspberry Pi** once a day
+- The generated images contain the official closed-source firmware from Raspberry Pi
 
- ## 下载地址
+ ## download links
 
 - **ArchLinuxARM-rpi-aarch64-latest.img.zip**：
-  - https://github.com/BurningC4/ArchlinuxARM-rpi-aarch64/releases/latest/download/ArchLinuxARM-rpi-aarch64-latest.img.zip
+  - https://github.com/eva0034/ArchlinuxARM-rpi-aarch64/releases/latest/download/ArchLinuxARM-rpi-aarch64-latest.img.zip
 - **ArchLinuxARM-rpi-aarch64-latest.img.zip.sha256sum**：
-  - https://github.com/BurningC4/ArchlinuxARM-rpi-aarch64/releases/latest/download/ArchLinuxARM-rpi-aarch64-latest.img.zip.sha256sum
+  - https://github.com/eva0034/ArchlinuxARM-rpi-aarch64/releases/latest/download/ArchLinuxARM-rpi-aarch64-latest.img.zip.sha256sum
 - **ArchLinuxARM-rpi-aarch64-latest.tar.gz**：
   - https://github.com/BurningC4/ArchlinuxARM-rpi-aarch64/releases/latest/download/ArchLinuxARM-rpi-aarch64-latest.tar.gz
 - **ArchLinuxARM-rpi-aarch64-latest.tar.gz.sha256sum**：
   - https://github.com/BurningC4/ArchlinuxARM-rpi-aarch64/releases/latest/download/ArchLinuxARM-rpi-aarch64-latest.tar.gz.sha256sum
 
- ## 安装了以下软件包及其依赖
+ ## The following software packages and their dependencies are installed
 
   ```
   base linux-rpi raspberrypi-bootloader crda dhcpcd dialog haveged iptables-nft nano net-tools netctl openssh rpi-eeprom vi which wireless_tools wpa_supplicant
   ```
   
 
- ## 启用了以下服务
+ ## The following software packages and their dependencies are installed...
+
 
   ```
   haveged sshd systemd-networkd systemd-resolved systemd-timesyncd
   ```
 
-  基本相当于官方 **rpi-aarch64** 镜像安装了 **linux-rpi**
+  ## Basically equivalent to the official **rpi-aarch64** Mirror Installed **linux-rpi**
 
-  ### IMG文件的额外订制
+  ### IMG Additional customizations
   
-  添加并启用了 **resize2fs_once.service**
+  added and enabled **resize2fs_once.service**
   
   ```
   [Unit]
@@ -45,15 +46,16 @@
   WantedBy=multi-user.target
   ```
   
-  该文件会将 **root** 分区扩展至整张sd卡并在完成后将自身删除
+  This file extends the root partition to the entire sd card size and deletes itself when completed
   
-  添加了来自 **cloud-guest-utils** 的 **growpart** ，该文件在首次开机时被 **resize2fs_once.service** 使用后删除
+  Added From **cloud-guest-utils** 的 **growpart** ，This file is deleted when booting for the first time **resize2fs_once.service** Deletes after use
  
- ## 使用方式
+ ## Usage
 
-  **root** 的密码是 ```root```
+ Default Root User : root
+ Default Root Password : root
   
-  **alarm** 的密码是 ```alarm```
+ Default Username : alarm 
+ Default User Password : alarm
   
-  默认没有安装 **sudo** ，所以通过 **ssh** 登录系统后需要 ```su``` 来获得 **root** 权限
-
+  Not installed by default **sudo**
